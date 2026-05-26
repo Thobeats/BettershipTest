@@ -18,7 +18,7 @@
                 <p class="mt-2 text-sm text-slate-600">Fill in the details below and submit your request.</p>
             </header>
 
-            <form action="<?= htmlspecialchars($_SERVER['HTTP_HOST'] . '/src/v1/actions/create_ticket.php', ENT_QUOTES, 'UTF-8'); ?>" method="POST" class="space-y-5">
+            <form action="<?= '/src/v1/actions/create_ticket.php'; ?>" method="POST" class="space-y-5">
                 <div class="flex flex-col gap-2">
                     <label for="name" class="text-sm font-medium">Full Name</label>
                     <input id="name" type="text" name="name" class="rounded-lg border border-slate-300 p-3 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200" required>

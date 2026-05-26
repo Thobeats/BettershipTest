@@ -35,9 +35,21 @@ class TicketController
             "status" => "open"
         ];
 
-        $db = fopen(__DIR__ . "/../ticket.json", 'a+');
-        fwrite($db, json_encode($entry) . PHP_EOL);
-        fclose($db);
+        $path = __DIR__ . "/../ticket.json";
+        $contents = is_file($path) ? file_get_contents($path) : false;
+        $tickets = [];
+
+        if ($contents !== false && trim($contents) !== '') {
+            $decoded = json_decode($contents, true);
+
+            if (is_array($decoded)) {
+                $tickets = array_is_list($decoded) ? $decoded : [$decoded];
+            }
+        }
+
+        $tickets[] = $entry;
+
+        file_put_contents($path, json_encode($tickets, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . PHP_EOL, LOCK_EX);
 
         return json_encode([
             "success" => true

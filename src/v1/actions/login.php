@@ -1,11 +1,11 @@
 <?php
+require __DIR__ . '/../../../vendor/autoload.php';
 
 use Tobi\BetternshipTest\Controllers\AdminController;
 
 
 if ($_SERVER['REQUEST_METHOD'] !== "POST")
     exit("wrong method");
-
 
 try {
     $email = isset($_POST['email']) ? $_POST['email'] : "";

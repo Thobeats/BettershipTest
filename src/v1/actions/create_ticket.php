@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../../../vendor/autoload.php';
 
 use Tobi\BetternshipTest\Controllers\TicketController;
 
@@ -19,10 +20,10 @@ try {
 
     $response = $ticketController->createTicket($name, $email, $title, $description);
 
-    exit('/index.php');
+    header('Location: /index.php');
+    exit;
 
 } catch (Exception $e) {
-    $logger->log($e->getMessage());
     $err_response = [
         'message' => $e->getMessage(),
         'success' => false

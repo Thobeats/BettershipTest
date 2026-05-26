@@ -13,7 +13,7 @@
     <div class="min-h-screen flex items-center justify-center bg-gray-50">
         <?php
         // build a safe action URL using the host; note this will use protocol-relative URL
-        $action = htmlspecialchars('//' . ($_SERVER['HTTP_HOST'] ?? '') . '/src/v1/actions/create_ticket.php', ENT_QUOTES, 'UTF-8');
+        $action = htmlspecialchars('//' . ($_SERVER['HTTP_HOST'] ?? '') . '/src/v1/actions/login.php', ENT_QUOTES, 'UTF-8');
         ?>
 
         <form action="<?= $action ?>" method="POST" class="w-full max-w-md bg-white p-6 rounded shadow">
