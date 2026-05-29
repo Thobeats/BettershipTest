@@ -55,4 +55,24 @@ class TicketController
             "success" => true
         ]);
     }
+
+    public function getTickets()
+    {
+        $path = __DIR__ . "/../ticket.json";
+        $contents = is_file($path) ? file_get_contents($path) : false;
+        $tickets = [];
+
+        if ($contents !== false && trim($contents) !== '') {
+            $decoded = json_decode($contents, true);
+
+            if (is_array($decoded)) {
+                $tickets = array_is_list($decoded) ? $decoded : [$decoded];
+            }
+        }
+
+        return json_encode([
+            "success" => true,
+            "data" => $tickets
+        ]);
+    }
 }

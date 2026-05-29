@@ -18,11 +18,20 @@ try {
     $adminController = new AdminController();
     $response = $adminController->login($email, $password);
 
+    session_start();
+    // regenerate session id to prevent fixation and store user info
+    session_regenerate_id(true);
+    // store relevant session data from the login response
+    $_SESSION['admin'] = $response;
+    $_SESSION['email'] = $email;
+    $_SESSION['logged_in'] = true;
+
+    
+
     header('Location: /admin.php');
     exit;
 
 } catch (Exception $e) {
-    $logger->log($e->getMessage());
     $err_response = array(
         'message' => $e->getMessage(),
         'success' => false
