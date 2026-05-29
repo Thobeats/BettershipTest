@@ -79,6 +79,7 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['email']) && !isset($_SESSION
             <div class="mb-4 flex justify-end">
                 <a href="/logout.php" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700">Logout</a>
             </div>
+
             <div id="list"></div>
         </section>
     </main>
